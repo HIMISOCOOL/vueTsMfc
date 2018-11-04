@@ -16,18 +16,6 @@ module.exports = {
                 .enforce('post')
                     .end()
                 .end()
-            .rule('css')
-                .oneOf('normal-post')
-                .enforce('post')
-                    .use('vue-style-loader')
-                    .loader('vue-style-loader')
-                    .options({ sourceMap: true, shadowMode: false })
-                    .end()
-                .use('css-loader')
-                    .loader('css-loader')
-                    .options({ sourceMap: true, importLoaders: 2 })
-                    .end()
-                .end()
             .end()
     },
     css: {
@@ -37,14 +25,6 @@ module.exports = {
             data: '@import "./src/styles/variables.scss";\n@import "./src/styles/mixins.scss";'
           }
         }
-      },
-  
-      devServer: {
-          proxy: {
-              '/api': {
-                  target: 'http://localhost:50205'
-              },
-          }
       },
   
       runtimeCompiler: true
